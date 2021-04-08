@@ -3,9 +3,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersController } from './models/users/users.controller';
-import { ProductsController } from './models/products/products.controller';
-import { UsersService } from './models/users/users.service';
 
 @Module({
   imports: [
@@ -16,7 +13,7 @@ import { UsersService } from './models/users/users.service';
         }),
     }),
   ],
-  controllers: [AppController, UsersController, ProductsController],
-  providers: [AppService, UsersService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

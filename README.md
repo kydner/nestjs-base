@@ -74,5 +74,6 @@ Nest is [MIT licensed](LICENSE).
 
 ## nestjs cli
 
-- Create Controller - [nest g controller cats]
-- Create Service - [nest g service cats]
+- Create Controller - [nest g controller app_name]
+- Create Service - [nest g service app_name]
+- Create Module - [nest g module app_name]
