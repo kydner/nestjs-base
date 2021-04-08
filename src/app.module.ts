@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UsersController } from './models/users/users.controller';
+import { ProductsController } from './models/products/products.controller';
 
 @Module({
   imports: [TypeOrmModule.forRootAsync({
@@ -11,7 +13,7 @@ import { AppService } from './app.service';
         autoLoadEntities: true,
       }),
   })],
-  controllers: [AppController],
+  controllers: [AppController, UsersController, ProductsController],
   providers: [AppService],
 })
 export class AppModule {}
