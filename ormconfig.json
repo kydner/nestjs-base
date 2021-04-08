@@ -1,0 +1,10 @@
+{
+  "type": "mysql",
+  "host": "192.168.3.2",
+  "port": 3306,
+  "username": "programmer",
+  "password": "programmer",
+  "database": "Programmer_test",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}
