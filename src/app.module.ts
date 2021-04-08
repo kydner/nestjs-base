@@ -8,12 +8,14 @@ import { ProductsController } from './models/products/products.controller';
 import { UsersService } from './models/users/users.service';
 
 @Module({
-  imports: [TypeOrmModule.forRootAsync({
-    useFactory: async () =>
-      Object.assign(await getConnectionOptions(), {
-        autoLoadEntities: true,
-      }),
-  })],
+  imports: [
+    TypeOrmModule.forRootAsync({
+      useFactory: async () =>
+        Object.assign(await getConnectionOptions(), {
+          autoLoadEntities: true,
+        }),
+    }),
+  ],
   controllers: [AppController, UsersController, ProductsController],
   providers: [AppService, UsersService],
 })
