@@ -1,15 +1,9 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  UsePipes,
-  ValidationPipe,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserDTO } from './user.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('User')
 @Controller('api/user')
 export class UserController {
   constructor(private userService: UserService) {}
@@ -23,10 +17,15 @@ export class UserController {
   }
 
   @Post()
-  @UsePipes(new ValidationPipe())
+  // @UsePipes(new ValidationPipe())
   async create(@Body() data: UserDTO): Promise<any> {
-    return data;
     const user = await this.userService.create(data);
     return user;
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    await this.userService.remove(id);
+    return id;
   }
 }
