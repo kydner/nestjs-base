@@ -1,11 +1,5 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  Generated,
-  BeforeInsert,
-} from 'typeorm';
-import { uuid } from 'uuidv4';
+import { Entity, Column, PrimaryGeneratedColumn, Generated } from 'typeorm';
+// import { uuid } from 'uuidv4';
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
@@ -20,9 +14,4 @@ export class User {
 
   @Column({ default: true })
   isActive: boolean;
-
-  @BeforeInsert()
-  uuid() {
-    this.id = uuid();
-  }
 }
