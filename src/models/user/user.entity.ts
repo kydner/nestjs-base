@@ -1,6 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, Generated } from 'typeorm';
-
-@Entity()
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  Generated,
+  BeforeInsert,
+} from 'typeorm';
+import { uuid } from 'uuidv4';
+@Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
   @Generated('uuid')
@@ -14,4 +20,9 @@ export class User {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @BeforeInsert()
+  uuid() {
+    this.id = uuid();
+  }
 }
