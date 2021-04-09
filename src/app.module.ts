@@ -1,19 +1,28 @@
+import { UserModule } from './models/user/user.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { getConnectionOptions } from 'typeorm';
+import { Connection } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forRootAsync({
-      useFactory: async () =>
-        Object.assign(await getConnectionOptions(), {
-          autoLoadEntities: true,
-        }),
+    UserModule,
+    UserModule,
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: '192.168.3.2',
+      port: 3306,
+      username: 'programmer',
+      password: 'programmer',
+      database: 'programmer_test',
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: true,
     }),
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private connection: Connection) {}
+}
