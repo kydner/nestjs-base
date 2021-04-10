@@ -7,14 +7,14 @@ import {
   ParseUUIDPipe,
   Post,
 } from '@nestjs/common';
-import { UserService } from './user.service';
-import { UserDTO } from './user.dto';
+import { UsersService } from './users.service';
+import { UsersDTO } from './users.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('User')
 @Controller('api/user')
-export class UserController {
-  constructor(private userService: UserService) {}
+export class UsersController {
+  constructor(private userService: UsersService) {}
   @Get()
   async findAll() {
     return await this.userService.findAll();
@@ -26,7 +26,7 @@ export class UserController {
 
   @Post()
   // @UsePipes(new ValidationPipe())
-  async create(@Body() data: UserDTO): Promise<any> {
+  async create(@Body() data: UsersDTO): Promise<any> {
     const user = await this.userService.create(data);
     return user;
   }
