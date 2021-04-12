@@ -13,13 +13,17 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUsersDTO } from './dto/create-users.dto';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiHeader, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('User')
 @Controller('api/user')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
+@ApiHeader({
+  name: 'My-Header',
+  description: 'Custom header',
+})
 export class UsersController {
   constructor(private userService: UsersService) {}
 
