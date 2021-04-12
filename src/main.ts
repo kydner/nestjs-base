@@ -10,7 +10,7 @@ async function bootstrap() {
     .setDescription('Nestjs Base API description')
     .setVersion('1.0')
     // .addTag('user')
-    .addBearerAuth({ in: 'header', type: 'http' })
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
