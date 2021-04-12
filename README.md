@@ -77,3 +77,13 @@ Nest is [MIT licensed](LICENSE).
 - Create Controller - [nest g controller app_name]
 - Create Service - [nest g service app_name]
 - Create Module - [nest g module app_name]
+
+## Kill Process port
+
+~ linux
+- lsof -i tcp:3000
+- kill -9 PID
+
+~ windows
+- netstat -ano | findstr :3000
+- tskill PID
