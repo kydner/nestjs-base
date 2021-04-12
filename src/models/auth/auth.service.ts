@@ -11,12 +11,16 @@ export class AuthService {
 
   async validateUser(userName: string, password: string): Promise<any> {
     const user = await this.usersService.getUser(userName);
+    if (!user)
+      return {
+        message: 'Invalid User',
+      };
     if (user && user.password === password) {
       const result = this.login(user);
       return result;
     }
     return {
-      message: 'invalid',
+      message: 'invalid Password',
     };
   }
 

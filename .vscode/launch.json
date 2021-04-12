@@ -8,12 +8,14 @@
       "type": "node",
       "request": "launch",
       "name": "Nestjs Debug",
-      "program": "${workspaceFolder}/src/main.ts",
-      "preLaunchTask": "tsc: watch - tsconfig.build.json",
-      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
       "skipFiles": [
         "${workspaceFolder}/node_modules/**/*.js",
-        "<node_internals>/**/*.js"
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/src/main.ts",
+      "preLaunchTask": "tsc: watch - tsconfig.build.json",
+      "outFiles": [
+          "${workspaceFolder}/dist/**/*.js"
       ]
     }
   ]
