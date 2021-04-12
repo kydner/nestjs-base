@@ -8,16 +8,21 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
+  UseGuards,
   ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUsersDTO } from './dto/create-users.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('User')
 @Controller('api/user')
+@ApiBearerAuth('JWT-auth')
 export class UsersController {
   constructor(private userService: UsersService) {}
+
+  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll() {
     return await this.userService.findAll();

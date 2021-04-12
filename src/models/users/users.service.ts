@@ -18,7 +18,7 @@ export class UsersService {
   findOne(id: string): Promise<Users> {
     return this.usersRepository.findOne(id);
   }
-  getByOne(userName: string): Promise<Users> {
+  getUser(userName: string): Promise<Users> {
     return this.usersRepository.findOne({
       where: { userName },
     });
