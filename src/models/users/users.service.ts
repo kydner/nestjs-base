@@ -18,8 +18,8 @@ export class UsersService {
   findOne(id: string): Promise<Users> {
     return this.usersRepository.findOne(id);
   }
-  getByOne(username: string): Promise<Users> {
-    return this.usersRepository.findOne(username);
+  getByOne(userName: string): Promise<Users> {
+    return this.usersRepository.findOne(userName);
   }
 
   async create(userDTO: CreateUsersDTO) {
