@@ -19,7 +19,9 @@ export class UsersService {
     return this.usersRepository.findOne(id);
   }
   getByOne(userName: string): Promise<Users> {
-    return this.usersRepository.findOne(userName);
+    return this.usersRepository.findOne({
+      where: { userName },
+    });
   }
 
   async create(userDTO: CreateUsersDTO) {
