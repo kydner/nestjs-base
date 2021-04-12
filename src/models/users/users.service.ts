@@ -18,6 +18,9 @@ export class UsersService {
   findOne(id: string): Promise<Users> {
     return this.usersRepository.findOne(id);
   }
+  getByOne(username: string): Promise<Users> {
+    return this.usersRepository.findOne(username);
+  }
 
   async create(userDTO: CreateUsersDTO) {
     const data = this.usersRepository.create(userDTO);
