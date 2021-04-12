@@ -8,11 +8,6 @@ import { LoginDTO } from './dto/login.dto';
 @Controller('api/auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
-  @UseGuards(AuthGuard('local'))
-  @Post('login')
-  async login(@Request() req) {
-    return this.authService.login(req.user);
-  }
   @Post('requestToken')
   async requestToken(@Body() data: LoginDTO): Promise<any> {
     return this.authService.validateUser(data.userName, data.password);
