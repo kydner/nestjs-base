@@ -7,7 +7,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Nestjs Debug",
       "program": "${workspaceFolder}/src/main.ts",
       "preLaunchTask": "tsc: watch - tsconfig.build.json",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
