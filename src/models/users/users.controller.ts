@@ -3,12 +3,15 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
+  HttpStatus,
   Param,
   ParseUUIDPipe,
   Post,
+  ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { UsersDTO } from './users.dto';
+import { CreateUsersDTO } from './dto/create-users.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('User')
@@ -20,15 +23,15 @@ export class UsersController {
     return await this.userService.findAll();
   }
   @Get(':id')
-  async findOne(@Param('id', new ParseUUIDPipe()) id: string) {
+  async findOne(@Param('id') id: string) {
     return await this.userService.findOne(id);
   }
 
   @Post()
-  // @UsePipes(new ValidationPipe())
-  async create(@Body() data: UsersDTO): Promise<any> {
-    const user = await this.userService.create(data);
-    return user;
+  async create(@Body(ValidationPipe) data: CreateUsersDTO): Promise<any> {
+    return await this.userService.create(data).catch((error) => {
+      throw new HttpException(error, HttpStatus.BAD_REQUEST);
+    });
   }
 
   @Delete(':id')
