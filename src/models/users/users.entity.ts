@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, Generated } from 'typeorm';
-import { usersInterface } from '../interfaces/users.interface';
+import { usersInterface } from './interfaces/users.interface';
 // import { uuid } from 'uuidv4';
 @Entity('users')
 export class Users implements usersInterface {

@@ -4,6 +4,6 @@ import { CreateUsersDTO } from './create-users.dto';
 
 export class UpdateUsersDTO extends CreateUsersDTO {
   @ApiProperty()
-  @IsUUID()
+  @IsUUID('all')
   id: string;
 }
