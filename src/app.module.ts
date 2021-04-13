@@ -9,10 +9,10 @@ import { AuthModule } from './models/auth/auth.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: '192.168.3.2',
       port: 3306,
-      username: 'root',
-      password: '',
+      username: 'programmer',
+      password: 'programmer',
       database: 'programmer_test',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
