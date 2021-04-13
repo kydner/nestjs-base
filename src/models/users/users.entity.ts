@@ -8,7 +8,7 @@ export class Users implements usersInterface {
   id: string;
 
   @Column({ unique: true, length: 30 })
-  userName: string;
+  username: string;
 
   @Column({ unique: true })
   email: string;

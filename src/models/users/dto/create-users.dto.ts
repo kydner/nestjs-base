@@ -10,7 +10,7 @@ export class CreateUsersDTO implements usersInterface {
 
   @ApiProperty()
   @IsNotEmpty()
-  userName: string;
+  username: string;
 
   @ApiProperty()
   @IsNotEmpty()

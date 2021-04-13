@@ -36,6 +36,10 @@ export class UsersController {
   async findOne(@Param('id') id: string) {
     return await this.userService.findOne(id);
   }
+  @Get('me')
+  async me() {
+    return await this.userService.me();
+  }
 
   @Post()
   async create(@Body(ValidationPipe) data: CreateUsersDTO): Promise<any> {

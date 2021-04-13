@@ -20,7 +20,7 @@ async function bootstrap() {
       docExpansion: 'none',
     },
   });
-
+  app.enableCors();
   await app.listen(8000);
 }
 bootstrap();

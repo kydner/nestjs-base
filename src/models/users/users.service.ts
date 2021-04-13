@@ -16,11 +16,18 @@ export class UsersService {
   }
 
   findOne(id: string): Promise<Users> {
+    if (id === 'me')
+      return this.usersRepository.findOne(
+        'e7b5a4c5-ed4a-4933-86e5-8cc8b2d3ef39',
+      );
     return this.usersRepository.findOne(id);
   }
-  getUser(userName: string): Promise<Users> {
+  me(): Promise<Users> {
+    return this.usersRepository.findOne('e7b5a4c5-ed4a-4933-86e5-8cc8b2d3ef39');
+  }
+  getUser(username: string): Promise<Users> {
     return this.usersRepository.findOne({
-      where: { userName },
+      where: { username },
     });
   }
 
