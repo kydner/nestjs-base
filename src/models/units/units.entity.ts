@@ -1,6 +1,7 @@
-import { Column, Generated, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Generated, PrimaryGeneratedColumn } from 'typeorm';
 import { UnitsInterface } from './units.interface';
 
+@Entity('units')
 export class Units implements UnitsInterface {
   @PrimaryGeneratedColumn('uuid')
   @Generated('uuid')
